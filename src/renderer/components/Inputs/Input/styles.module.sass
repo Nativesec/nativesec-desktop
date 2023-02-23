@@ -1,0 +1,49 @@
+@use "../../../styles/_util" as *
+
+
+.inputAnimated.dark
+  label
+    color: $white
+
+  input
+    background-color: $gray-900
+    color: $white
+
+.inputAnimated.light
+  label
+    color: $black
+
+  input
+    background-color: $gray-300
+    color: $black
+
+.inputAnimated
+  position: relative
+  width: 100%
+  height: 50px
+
+  .input
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+    border: 0
+    padding: 1.25rem
+    font-size: 1rem
+    border-radius: $default-radius
+    outline: none
+
+    background: $white
+
+    &:focus
+      border-color: $blue-100
+
+  .input.notValid
+    border: 1px solid $red-100
+
+
+
+
+

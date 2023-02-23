@@ -1,0 +1,385 @@
+@use "renderer/styles/_util" as *
+// ------------------------------------------------------------
+// -------------------------- Colors --------------------------
+// ------------------------------------------------------------
+.workspace.dark
+  background-color: $gray-800
+
+  .buttonsWorkspace
+    button
+      color: $white
+      &:hover
+        background-color: $blue-100 !important
+
+  .user
+    button
+      color: $white
+      &:hover
+        background-color: $blue-100 !important
+
+  .title
+    color: $white
+
+  .profileMenu
+    background-color: $gray-700
+    color: $white
+
+    li
+      transition: background-color ease-in-out 0.2s
+      &:hover
+        background-color: $gray-700-hover
+
+  .list
+    li
+      color: $white
+
+  .workspaceContentSelected
+    background-color: $gray-700
+    color: $white
+    
+
+    svg
+      color: $white
+
+  .box
+    border: 2px solid $gray-400
+    transition: box-shadow 0.2s, border-color 0.2s
+    &:hover
+      border-color: $blue-100
+    &.selected
+      border-color: $blue-100 !important
+      background-color: $gray-800
+
+  .emptySafeBox
+    background-color: $gray-700
+
+  .workspaceContentMenu
+    button
+      background-color: $gray-700
+      &:hover
+        background-color: $gray-650
+
+  .openCenter
+    background-color: $gray-800
+
+  .grid
+    background-color: $gray-700
+
+.workspace.light
+  background-color: $gray-200
+
+  label
+    background-color: $white
+
+  .title
+    color: $black
+
+  .user
+    button
+      background-color: $gray-300 !important
+      &:hover
+        background-color: $blue-100 !important
+        color: $white
+
+  .profileMenu
+    background-color: $white
+    color: $black
+
+    li
+      &:hover
+        background-color: $gray-200
+  .list
+    li
+      color: $black
+
+  .workspaceContentMenu
+    button
+      background-color: $gray-200
+      color: $black
+      &:hover
+        background-color: $blue-100
+        color: $white
+
+  .box
+    border: 2px solid $gray-400
+    transition: box-shadow 0.2s, background-color 0.2s
+    &:hover
+      border-color: $blue-100
+    &.selected
+      border-color: $blue-100 !important
+      background-color: $gray-200
+
+  .workspaceContentSelected
+    background-color: $white
+
+  .openCenter
+    background-color: $gray-200
+
+  .grid
+    background-color: $white
+
+  .ssh, .server
+    svg
+      color: $gray-700 !important
+
+  .emptySafeBox
+    background-color: $white
+
+// --------------------------------------------------------------
+// -------------------------- Settings --------------------------
+// --------------------------------------------------------------
+
+
+.workspace
+  @include flex(flex, flex-start, flex-start, row)
+  width: 100%
+
+  .workspace_sidebar
+    width: 250px
+
+    .title
+      @include flex(flex, center, center, column)
+      height: 150px
+      width: 100%
+      text-align: center
+      margin-top: 1.5rem
+      margin-bottom: 2rem
+      gap: 1rem
+
+      img
+        max-width: 100px
+        max-height: 100px
+        width: 100%
+        height: 100%
+        border-radius: 5rem
+
+    .list
+      position: relative
+
+      ul
+        width:100%
+
+        li
+          @include flex(flex, center, flex-start, row)
+          line-height: 2.5rem
+          cursor: pointer
+          transition: background-color 0.2s ease, color 0.2s ease
+          &:hover
+            background-color: var(--second-color)
+
+            color: $white
+
+          svg
+            font-size: 1.3rem
+            margin-left: 1rem
+            margin-right: 1.5rem
+
+        .selected
+          background-color: var(--main-color)
+          color: $white
+
+      .workspacesConfig
+        position: absolute
+        display: inline
+        bottom: -82px
+
+      .workspacesConfig.open
+        display: none
+
+      .subMenu
+        padding: 0 1.2rem
+        line-height: 2.6rem
+
+  .safeBoxLoading
+    @include flex(flex, center, center, row)
+    height: 100%
+    width: 100%
+
+  .workspaceContent
+    height: 100%
+    width: 100%
+
+    .workspaceContentMenu
+      @include flex(flex, center, space-between, row)
+      height: 60px
+      width: calc( 100% - 64px )
+
+      .buttonsWorkspace
+        position: relative
+        z-index: 1
+        display: flex
+        gap: 1rem
+        border-radius: $default-radius
+        &::after
+          content: ''
+          display: flex
+          position: absolute
+          height: 10px
+          width: 90%
+          left: 7px
+          bottom: 1px
+          border-radius: .5rem
+          z-index: -111
+
+        button
+          height: 35px
+
+        svg
+          font-size: 1rem
+
+      >div
+        display: flex
+        gap: 1rem
+
+      .user
+        position: relative
+
+        button
+          @include flex(flex, center, center, row)
+          border-radius: .5rem
+          width: 40px
+          height: 40px
+          cursor: pointer
+          position: relative
+          font-size: 1.4rem
+          transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s
+          &::before
+            @include data_tooltip()
+            right: -10px
+            top: 120%
+
+        .button
+          &:hover::before
+            visibility: visible
+            opacity: 1
+
+        .profileMenu
+          position: absolute
+          top: 110%
+          right: -50%
+          width: 232px
+          z-index: 9999
+          box-shadow: 2px 2px 15px -10px #000000
+          border-radius: $default-radius
+
+          ul
+            @include flex(flex, flex-start, center, column)
+
+            li
+              width: 100%
+              padding: .7rem 1rem
+              cursor: pointer
+              border-radius: $default-radius
+
+    .overflow
+      overflow: hidden !important
+
+    .workspaceContentSelected
+      @include flex(flex, flex-start, center, row)
+      max-height: calc(100% - 80px )
+      width: 100%
+      height: 100%
+      margin-right: 2rem
+      gap: 1rem
+      border-radius: .5rem
+      overflow: auto
+
+      svg
+        height: 150px
+
+      .emptySafeBox
+        @include flex(flex, center, center, column)
+        width: 400px
+        height: 100%
+        svg
+          height: 150px
+
+      .box
+        @include flex(flex, center, center, column)
+        width: 280px
+        border-radius: $default-radius
+        height: 160px
+        cursor: pointer
+        margin: 0 auto
+        margin-bottom: 2rem
+        z-index: 3
+        text-align: center
+
+        svg
+          width: 70px
+          height: 70px
+        .annotation
+          svg
+            width: 60px
+        .bankAccount
+          svg
+            color: $yellow-100
+            width: 50px
+        .email
+          svg
+            color: $red-100
+            width: 65px
+        .kubeconfig
+          svg
+            color: $blue-100
+            width: 60px
+        .softwareLicense
+          svg
+            color: $green-100
+            width: 65px
+        .login
+          svg
+            color: $red-100
+            width: 60px
+        .ssh
+          svg
+            color: $gray-300
+        .server
+          svg
+            width: 55px
+            color: $gray-300
+        .site
+          svg
+            color: $green-100
+
+    .openCenter
+      @include flex(flex, flex-start, space-between, row)
+      width: 100%
+
+      .open
+        transition: all 0.8s ease
+        flex: 2
+
+      .create
+        position: relative
+        z-index: 200
+
+      .grid
+        width: 400px !important
+
+    .create
+      @include flex(flex, center, flex-end, row)
+      width: 0px
+      position: absolute
+      left: 0
+      z-index: -1
+      height: 100%
+
+      .lottieControl
+        @include flex(flex, center, center, row)
+        z-index: 200
+        width: 100%
+
+    .open
+      svg
+        max-width: 200px
+
+    .grid
+      width: 100%
+      height: 100%
+      padding: 1rem
+      display: grid !important
+      justify-content: center
+      grid-template-columns: repeat(auto-fill, minmax(290px, 330px))
+      grid-template-rows: repeat(auto-fill, minmax(180px, 100px))
+      overflow: auto

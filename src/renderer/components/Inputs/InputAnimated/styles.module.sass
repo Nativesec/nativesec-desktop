@@ -1,0 +1,78 @@
+@use "../../../styles/_util" as *
+
+
+.inputAnimated.dark
+  label
+    color: $white
+
+  input
+    background-color: $gray-900
+    color: $white
+
+.inputAnimated.light
+  label
+    color: $black
+
+  input
+    background-color: $gray-300
+    color: $black
+
+.inputAnimated
+  position: relative
+  width: 100%
+  height: 50px
+
+  .input
+    position: relative
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+    border: 0
+    padding: 1.25rem
+    font-size: 1rem
+    border-radius: $default-radius
+    outline: none
+
+    background: $white
+
+    &:focus
+      border-color: $blue-100
+
+  .input.notValid
+    border: 1px solid $red-100
+
+  label
+    position: absolute
+    left: 10px
+    font-size: 1rem
+    top: 16px
+    padding: 0 0.5rem
+    pointer-events: none
+    cursor: text
+    background-color: transparent
+
+    transition: top 100ms ease-in, left 100ms ease-in, font-size 100ms ease-in, z-index 0.2s
+
+  .input:focus ~ label,
+  .input:not(:placeholder-shown).input:not(:focus) ~ label
+    top: -10px
+    left: 10px
+    font-size: .9rem
+
+  .input.notValid:focus ~ label,
+  .input.notValid:not(:placeholder-shown).input.notValid:not(:focus) ~ label
+    color: $red-100
+
+  .input.notValid ~ label
+    color: $red-100
+
+  .input:focus
+    border-width: 2px
+
+
+
+
+
+

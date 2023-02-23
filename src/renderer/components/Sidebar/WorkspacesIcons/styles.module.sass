@@ -1,0 +1,62 @@
+@use "renderer/styles/_util" as *
+// --------------------------------------------------------------
+// -------------------------- Settings --------------------------
+// --------------------------------------------------------------
+
+.workspaceIcons
+  position: relative
+  margin: 5px 10px
+  height: 55px
+  width: 55px
+  z-index: 3000
+
+  .invite
+    background-color: $red-100 !important
+
+  .invite
+    &::before
+      background-color: $red-100 !important
+  .workspaceIcons_icon
+    @include flex(flex, center, center, column)
+    background-color: $blue-100
+    padding: .1rem
+    color: $white
+    height: 100%
+    border-radius: 5rem
+    cursor: pointer
+    height: 55px
+    width: 55px
+    z-index: 2000 !important
+    &::before
+      content: ''
+      border-radius: 5rem
+      left:-27px
+      position: absolute
+      height: 0px
+      border-width: 0 3px 3px 0
+      display: inline-block
+      padding: 10px
+      background-color: $blue-100
+      visibility: hidden
+      opacity: 0
+      transition: all 0.2s ease
+    &:hover::before
+      visibility: visible
+      opacity: 1
+      height: 25px
+
+    p
+      text-transform: uppercase
+
+    img
+      height: 100%
+      width: 100%
+      border-radius: 50%
+
+    svg
+      font-size: 2rem
+
+
+
+
+

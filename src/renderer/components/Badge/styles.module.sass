@@ -1,0 +1,21 @@
+@use "renderer/styles/_util" as *
+.badge
+  @include flex(flex, center, center, row)
+  background-color: $gray-600
+  color: $white
+  padding: 0 15px
+  font-size: .8rem
+  border-radius: 5rem
+  height: 30px
+
+  svg
+    height: 15px
+    widows: 15px
+
+    margin-top: 4px
+    margin-left: 10px
+    color: $white
+    font-size: 1rem
+
+    &:hover
+      color: var(--main-color)

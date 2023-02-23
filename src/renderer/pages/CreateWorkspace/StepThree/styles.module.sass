@@ -1,0 +1,58 @@
+@use "renderer/styles/_util" as *
+
+.stepThree.dark
+  label
+    background-color: $gray-700
+    color: $white !important
+  textarea
+    color: $white
+    background: transparent
+
+.stepThree.light
+  label
+    color: $gray-700 !important
+    background-color: $gray-100
+  textarea
+    border-color: $gray-700
+    background-color: transparent
+
+.stepThree
+  @include flex(flex, center , center, column)
+  width: 100%
+
+  @media (max-height: 700px)
+    margin-top: -3rem
+
+  >input
+    height: 200px
+
+  textarea
+    border: 1px solid !important
+    @media (max-height: 700px)
+      max-height: 100px
+
+  .pickColor
+    display: flex
+    gap: 2rem
+    margin-top: 1rem
+    margin-top: 80px
+
+    @media (max-height: 700px)
+      margin-top: 20px
+  
+    p
+      margin-bottom: 1rem
+      width: 100%
+      text-align: center
+
+    div
+      div
+        div
+          div
+            div
+              div
+                div
+                  opacity: 0
+                  visibility: hidden
+            
+

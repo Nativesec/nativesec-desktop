@@ -1,0 +1,88 @@
+@use "renderer/styles/_util" as *
+
+.leaveOrganization
+  @include flex(flex, center, center, column)
+  text-align: center
+  height: 100%
+  width: 100%
+
+  span
+    text-decoration: underline
+
+  h2
+    font-size: 1.4rem
+
+  form
+    @include flex(flex, center, center, column)
+    height: 100%
+    width: 100%
+    gap: 1rem
+    margin-top: 1rem
+    button
+      max-width: 400px
+    span
+      text-decoration: none
+
+    .formError
+      position: relative
+      top: -10px
+      left: 10px
+      height: 10px
+      width: 100%
+      color: $red-100
+      text-align: start
+      font-size: .9rem
+
+.reactModalOverlay
+  @include flex(flex, center, center ,column)
+  z-index: 3001
+  background: #00000063
+  position: fixed
+  top:0
+  bottom:0
+  right:0
+  left:0
+  display: flex
+  align-items:  center
+  justify-content: center
+
+.reactModalContent
+  width: 100%
+  height: 100%
+  max-height: 450px
+  max-width: 700px
+  background: $white
+  padding: 3rem
+  position: relative
+  border-radius:.5rem
+  display: flex
+  justify-content: center
+  align-items: center
+
+.reactModalContent.dark
+  background-color: $gray-700
+  color: $white
+
+  label
+    background-color: $gray-700
+    color: $gray-300 !important
+
+  input
+    color: $white
+    background: transparent
+    border: 1px solid $white !important
+
+.reactModalContent.light
+  background-color: $white
+  color: $gray-700
+
+  label
+    background-color: $white
+    color: $gray-700 !important
+
+  input
+    color: $gray-700
+    border-color: $gray-700
+    background: transparent
+    border: 1px solid !important
+

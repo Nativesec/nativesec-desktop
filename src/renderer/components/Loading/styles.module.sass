@@ -1,0 +1,11 @@
+@use "renderer/styles/_util" as *
+.loading
+  @include flex(flex, center, center, column)
+  position: absolute
+  z-index: 10000
+  height: 100vh
+  width: 100vw
+  background: $white
+  p
+    position: absolute
+    top: 550px

@@ -1,0 +1,101 @@
+
+
+$white: #FFFFFF
+$black: #000000
+
+
+$gray-100: #fafafa
+$gray-200: #f2f3f5
+$gray-300: #e3e5e8
+$gray-350: #bebebe
+$gray-400: #9b9b9b
+$gray-600: #737373
+$gray-650: #40464b
+$gray-700: #36393f
+$gray-700-hover: #595c65
+$gray-800: #2f3136
+$gray-850: #2f3136
+$gray-900: #292B2F
+$gray-1000: #202225
+
+$mainColor: var(--main-color)
+
+$hover-gradient: #02020210
+$red-100: #f44336
+$red-100-hover: #c4382e
+
+$purple-100: #651fff
+$purple-100-hover: #6200ea
+
+$pink-100: #f50057
+$pink-100-hover: #c51162
+
+$blue-50: #51a6ec
+$blue-100: #2196f3
+$blue-100-hover: #156bc1
+
+$green-100: #2ecb71
+$green-100-hover: #3b8d3e
+
+$orange-100: #f9842c
+
+$yellow-100: #ece332
+$yellow-100-hover: #8d893b
+
+$default-radius: 5px
+
+
+
+@mixin flex($flex,$align, $justify, $direction)
+  display: $flex
+  align-items: $align
+  justify-content: $justify
+  flex-direction: $direction
+
+@mixin form_error()
+  top: 3px
+  left: .5rem
+  width: 100%
+  font-size: .9rem
+  position: relative
+  color: $red-100
+
+@mixin default_page()
+  width: 100%
+  height: 100%
+
+  padding: 1rem
+
+
+@mixin data_tooltip()
+  content: attr(data-tooltip)
+  position: absolute
+  width: max-content
+  padding: .5rem 1rem
+  z-index: 1000
+
+  border-radius: $default-radius
+  font-size: .8rem
+
+  background: $gray-600
+  color: $white
+  visibility: hidden
+  opacity: 0
+
+  transition: visibility 0.2s, opacity 0.2s
+
+@mixin limit()
+  max-width: 1333px
+  width: 100%
+
+
+@mixin buttonGradient()
+  color: $white
+  border-radius: $default-radius
+  width: 100%
+  backdrop-filter: blur(15px)
+  background-color: rgba(255, 255, 255, 0.028)
+  box-shadow: 0 15px 35px #00000049
+  border-top: 1px solid  rgba(255, 255, 255, 0.1)
+  border-bottom: 1px solid  rgba(255, 255, 255, 0.1)
+  transition: background-color ease-in-out 0.2s, box-shadow 0.2s

@@ -1,0 +1,115 @@
+@use "renderer/styles/_util" as *
+// ------------------------------------------------------------
+// -------------------------- Colors --------------------------
+// ------------------------------------------------------------
+.reactModalContent.dark
+  background: $gray-800
+  color: $white
+
+  input
+    color: $white !important
+
+  input
+    background-color: transparent
+    border: 1px solid !important
+  .button
+    width:80%
+    position: relative
+
+.reactModalContent.light
+  background-color: $white
+
+  input
+    background-color: transparent
+    border: 1px solid !important
+
+  label
+    background-color: $white
+    color: $black !important
+
+// ------------------------------------------------------------
+// -------------------------- Settings ------------------------
+// ------------------------------------------------------------
+.modal
+  @include flex(flex, center, center, column)
+  text-align: center
+  height: 100%
+  gap: 2rem
+
+  .user
+    @include flex(flex, center, center, row)
+    gap: 1rem
+    width: 100%
+
+    .name
+      text-decoration: none
+      width: 140px
+
+    .input
+      height: 100%
+      width: 100%
+      @include flex(flex, center, center, column)
+
+      p
+        margin-top: 5px
+
+    .toggleSwitch
+      @include flex(flex, center, center, row)
+      display: flex
+
+  h2
+    font-size: 1.4rem
+  input
+    color: red
+    border-color: $gray-400 !important
+
+  label
+    background-color: $gray-800
+    color: $gray-300 !important
+
+  span
+    text-decoration: underline
+
+  button
+    max-width: 400px
+
+  form
+    @include flex(flex, center, center, column)
+    height: 100%
+    gap: 1rem
+    position: relative
+    span
+      text-decoration: none
+
+    p
+      margin-top: -10px
+      margin-left: 10px
+      color: $red-100
+      width: 100%
+      text-align: start
+      font-size: .9rem
+
+.reactModalOverlay
+  @include flex(flex, center, center ,column)
+  z-index: 4000
+  background: #00000087
+  position: fixed
+  top:0
+  bottom:0
+  right:0
+  left:0
+  display:flex
+  align-items:  center
+  justify-content:center
+  transition: all 0.7s
+
+
+.reactModalContent
+  width: 100%
+  height: 100%
+  max-height: 450px
+  max-width: 700px
+  padding:3rem
+  position:relative
+  border-radius:.5rem
+

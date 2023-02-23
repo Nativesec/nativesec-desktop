@@ -1,0 +1,61 @@
+@use "renderer/styles/_util" as *
+
+.stepTwo.dark
+  label
+    background-color: $gray-700
+    color: $white !important
+  input
+    color: $white
+    background-color: transparent !important
+
+.stepTwo.light
+  label
+    color: $gray-700 !important
+    background-color: $gray-100
+  input
+    border-color: $gray-700
+    background: transparent
+
+.stepTwo
+  @include flex (flex, center, center, column)
+  width: 100%
+  text-align: center
+
+  @media (max-height: 700px)
+    margin-top: -5rem
+
+  svg
+    font-size: 2rem
+
+  img
+    width: 100px
+    cursor: pointer
+    @media (max-height: 700px)
+      width: 70px
+      
+  input
+    border: 1px solid !important
+
+  h2
+    margin-bottom: 2rem
+
+  .stepTwo_dropzone
+    img
+      margin-top: 1rem
+      margin-bottom: 1rem
+      @media (max-height: 700px)
+        margin-bottom: 0
+    .name_file
+      margin-bottom: 2rem
+      color: $blue-100
+    .error_file
+      margin-bottom: 1rem
+      color: red
+  >p
+    margin-left: 10px
+    width: 100%
+    text-align: start
+    margin-top: .5rem
+    color: $red-100
+
+

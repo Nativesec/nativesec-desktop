@@ -1,0 +1,225 @@
+@use '../../../../styles/_util' as *
+// --------------------------------------------------------------
+// --------------------------- THEME ----------------------------
+// --------------------------------------------------------------
+.create.dark
+  .actions
+    button
+      background-color: $gray-650
+      &:first-child
+        &:hover
+          background-color: $red-100
+          svg
+            color: $white
+      &:last-child
+        &:hover
+          background-color: $green-100
+          svg
+            color: $white
+    .edit
+      &:hover
+        background-color: $yellow-100 !important
+        svg
+          color: $white
+
+  label
+    background-color: $gray-700 !important
+    color: $white !important
+  input, textarea
+    border-color: $gray-400 !important
+    color: $gray-300
+    background-color: transparent
+
+  .inputParticipants
+    .input
+      >div
+        >div
+          background-color: $gray-700
+          border-color: $gray-400 !important
+          div
+            color: $white
+            div
+              >div
+                background-color: $gray-850
+                border-radius: 0
+                &:nth-child(2):hover
+                  background-color: $red-100
+                  cursor: pointer
+      p
+        background-color: $gray-700
+
+.create.light
+  .actions
+    button
+      background-color: $gray-300
+      &:first-child
+        &:hover
+          background-color: $red-100
+          svg
+            color: $white
+      &:last-child
+        &:hover
+          background-color: $green-100
+          svg
+            color: $white
+
+    .edit
+      &:hover
+        background-color: $yellow-100 !important
+        svg
+          color: $white
+
+  .inputParticipants
+    .input
+      div
+        >div
+          border-color: $gray-400 !important
+          div
+            div
+              color: black
+              >div
+                color: $white
+                background-color: $gray-400
+                border-radius: 0
+                svg
+                  color: $white
+                &:nth-child(2):hover
+                  cursor: pointer
+      p
+        background-color: $white
+
+
+  label
+    background-color: $white !important
+    color: $black !important
+
+  input, textarea
+    border-color: $gray-400 !important
+    color: $black
+    background-color: transparent
+
+// --------------------------------------------------------------
+// -------------------------- Settings --------------------------
+// --------------------------------------------------------------
+.create
+  @include flex(flex, center, center, column)
+  gap: 1.2rem
+  padding: 2rem
+
+  input, textarea
+    border: 1px solid !important
+  .actions
+    display: flex
+    position: absolute
+    height: 50px
+
+    gap: 1rem
+    top: 1rem
+    left: 2rem
+    font-size: 1.5rem
+    z-index: 301
+    color: var(--main-color)
+
+    svg
+      transition: color ease-in-out 0.2s
+    button
+      @include flex(flex, center, center, row)
+      border-radius: .5rem
+      height: 40px
+      width: 40px
+      z-index: 99999 !important
+
+      transition: background-color ease-in-out 0.2s, box-shadow 0.2s
+      position: relative
+      &::before
+        content: attr(data-tooltip)
+        position: absolute
+        bottom: -100%
+
+        width: max-content
+        color: $white
+        padding: .5rem 1rem
+        z-index: 9999
+        border-radius: $default-radius
+        background-color: $gray-600
+
+        visibility: hidden
+        opacity: 0
+
+        font-size: .8rem
+        transition: visibility 0.2s, opacity 0.2s
+      &:hover::before
+        visibility: visible
+        opacity: 1
+
+    svg
+      height: 20px !important
+      width: 20px !important
+      font-size: 1.5rem
+      cursor: pointer
+
+  .crypto
+    @include flex(flex, center, center, row)
+    gap: 10px
+    width: 100%
+
+    svg
+      height: 40px !important
+      width: 43px !important
+      padding: .6rem
+      border-radius: 5rem
+
+      cursor: pointer
+      color: var(--main-color)
+
+      transition: background-color 0.2s
+      &:hover
+        background-color: $gray-200
+
+  .inputParticipants
+    @include flex(flex, center, center, column)
+    width: 100%
+    gap: 1rem
+    position: relative
+    margin-top: 2rem
+
+    .input
+      width: 100%
+      height: 100%
+      position: relative
+
+      input, textarea
+        border: 0 !important
+
+        p
+          position: absolute
+          margin-left: 14px
+          margin-top: -4px
+          font-size: .8rem
+          z-index: 200
+          padding: 0 .5rem
+
+      >div
+        margin-top: .2rem
+        margin-bottom: .2rem
+
+        >div
+          min-height: 50px
+          padding: .5rem 0
+
+          &:nth-child(4)
+            z-index: 201
+      svg
+        max-height: 20px
+
+
+.error
+  color: $red-100
+  margin-right: auto
+  margin-left: 10px
+  margin-top: 5px
+  display: inline
+
+.disabled
+  display: none
+

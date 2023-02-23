@@ -1,0 +1,130 @@
+@use "renderer/styles/_util" as *
+// --------------------------------------------------------------
+// --------------------------- THEME ----------------------------
+// --------------------------------------------------------------
+
+.createSafeBox.dark
+  background-color: $gray-700
+  label
+    background-color: $gray-700 !important
+    color: $white !important
+
+  input, textarea
+    color: $gray-300
+    border-color: $gray-400 !important
+    &:hover
+      border-color: $gray-400 !important
+    &:focus
+      border-color: var(--main-color) !important
+  .option
+    background-color: $gray-700
+    box-shadow: 2px 2px 30px 25px #00000023
+    color: $white
+
+    >div
+      &:hover
+        background-color: $gray-650
+
+  svg
+    color: $white
+
+.createSafeBox.light
+  background-color: $white
+  label
+    background-color: $white
+    color: $gray-700 !important
+
+  input, textarea
+    color: $gray-700
+    border-color: $gray-400 !important
+
+
+  .option
+    background-color: $white
+    box-shadow: 2px 2px 30px 25px #00000013
+    color: $gray-700
+    >div
+      &:hover
+        background-color: $gray-300
+
+  svg
+    color: $gray-700
+
+// --------------------------------------------------------------
+// -------------------------- Settings --------------------------
+// --------------------------------------------------------------
+
+.createSafeBox
+  @include flex(flex, center, center, column)
+  height: 100%
+  width: 120%
+  position: relative
+  gap: 2rem
+  border-top-left-radius: $default-radius
+  border-bottom-left-radius: $default-radius
+
+.overflow
+  overflow-y: auto
+  overflow-x: hidden
+
+.createWorkspace_content
+  @include flex(flex, center, flex-start, column)
+  width: 100%
+  height: 100%
+  margin-top: 70px
+
+  input, textarea
+    background: transparent !important
+    border: 1px solid !important
+
+  .dropdown
+    margin-top: 1rem
+    position: relative
+    width: calc( 100% - 64px )
+    height: 50px
+    color: $black
+    z-index: 300
+
+    &::before
+      content: ''
+      position: absolute
+      right: 20px
+      top: 15px
+      width: 8px
+      height: 8px
+      border: 2px solid #333
+      border-top: 2px solid #fff
+      border-right: 2px solid #fff
+      z-index: -1
+      transform: rotate(-45deg)
+      pointer-events: none
+
+    input
+      cursor: pointer
+
+    .input:focus-within ~ .option
+      opacity: 1
+      visibility: visible
+
+    .option
+      position: absolute
+      top: 60px
+      width: 100%
+      border-radius: 10px
+      overflow: hidden
+      transition: opacity 0.2s, visibility 0.2s
+      opacity: 0
+      visibility: hidden
+
+      @media (max-height: 700px)
+        top: -10px
+        div
+          padding: 8px 10px !important
+
+      div
+        padding: 12px 20px
+        cursor: pointer
+
+  .selected
+    margin-top: 50px
+    width: 100%

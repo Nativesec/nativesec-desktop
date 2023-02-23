@@ -1,0 +1,94 @@
+@use "renderer/styles/_util" as *
+
+.verify
+  @include flex(flex, center, center, column)
+  width: 100%
+  height: 100%
+  text-align: center
+
+  h2
+    margin-bottom: 3rem
+    font-size: 1.4rem
+    span
+      text-decoration: underline
+
+  form
+    @include flex(flex, center, center, column)
+    gap: 1rem
+
+    input
+      border-color: var(--main-color) !important
+    label
+      background-color: $white
+      color: var(--main-color) !important
+
+    .buttons
+      @include flex(flex, center, center, column)
+      width: 100%
+      gap: 1rem
+
+    .formError
+        color: $red-100
+        position: relative
+        text-align: flex-start
+        width: 100%
+        font-size: .9rem
+        top: -10px
+        left: 5px
+        height: 10px
+
+.reactModalOverlay
+  @include flex(flex, center, center ,column)
+  z-index: 3001
+  background: #00000063
+  position: fixed
+  top:0
+  bottom:0
+  right:0
+  left:0
+  display:flex
+  align-items:  center
+  justify-content:center
+
+.reactModalContent
+  width: 100%
+  height: 100%
+  max-height: 400px
+  max-width: 700px
+  padding:3rem
+  position:relative
+  border-radius:.5rem
+
+
+.reactModalContent.dark
+  background-color: $gray-700
+  color: $white
+
+  label
+    background-color: $gray-700
+    color: $white !important
+  input
+    color: $white
+    background: transparent
+    border: 1px solid !important
+
+  button
+    max-width: 450px
+
+
+
+.reactModalContent.light
+  background: $white
+  color: $black
+
+  label
+    background-color: $white
+    color: $gray-700 !important
+
+  input
+    color: $gray-700
+    border: 1px solid !important
+    background: transparent
+
+  button
+    max-width: 450px

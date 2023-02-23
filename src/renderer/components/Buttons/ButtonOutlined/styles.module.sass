@@ -1,0 +1,31 @@
+@use "renderer/styles/_util" as *
+.button
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: .5rem
+  font-size: .8rem
+  text-transform: uppercase
+  background: $white
+  padding: .3rem 1.3rem
+
+  border:1px solid $blue-100
+  border-radius: $default-radius
+
+  transition: filter 0.2s, background-color ease-in-out 0.2s
+
+  &:hover
+    background-color: $blue-100
+
+  svg
+    font-size: 1rem
+.disabled
+  border-color: $gray-200 !important
+  cursor: default
+  svg
+    color: $gray-200 !important
+
+  &:hover
+    filter: none
+
+

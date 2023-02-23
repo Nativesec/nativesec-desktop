@@ -1,0 +1,84 @@
+@use 'renderer/styles/_util' as *
+
+// ------------------------------------------------------------
+// -------------------------- Colors --------------------------
+// ------------------------------------------------------------
+.invites.dark
+  background-color: $gray-700
+  color: $white
+
+  .buttons
+    button
+      background-color: transparent
+      color: $white
+      &:first-child
+        &:hover
+          color: $white
+          background-color: $green-100 !important
+          border-color: $green-100
+      &:last-child
+        &:hover
+          color: $white
+          background-color: $red-100 !important
+          border-color: $red-100
+.invites.light
+  background-color: $white
+
+  .buttons
+    button
+      &:first-child
+        &:hover
+          color: $white
+          background-color: $green-100 !important
+          border-color: $green-100
+      &:last-child
+        &:hover
+          color: $white
+          background-color: $red-100 !important
+          border-color: $red-100
+
+
+// ------------------------------------------------------------
+// ------------------------- Settings -------------------------
+// ------------------------------------------------------------
+.invites
+  @include flex(flex, flex-start, center, row)
+  width: 100%
+  height: 100%
+  padding:  1rem
+  overflow: auto
+
+  .limit
+    @include limit()
+    .container
+      @include flex(flex, center, flex-start, column)
+      width: 100%
+      height: 100%
+      text-align: center
+
+
+      .invite
+        @include flex(flex, center, center, row)
+        border-bottom: 1px solid $blue-100
+        width: 100%
+        max-height: 100px
+        padding: 1rem
+
+      span
+        font-weight: bold
+    .buttons
+      @include flex(flex, center, center, row)
+      margin-left: auto
+      gap: 1rem
+      button
+        height: 35px
+        width: 150px
+        &:first-child
+          svg
+            font-size: 1.3rem
+      .loading
+        @include flex(flex, center, center, row)
+        width: 332px
+        max-height: 30px
+        svg
+          max-width: 100px

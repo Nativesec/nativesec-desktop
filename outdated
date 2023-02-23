@@ -1,0 +1,17 @@
+Package                            Current   Wanted         Latest  Location
+@types/jest                         27.5.2   27.5.2         29.2.0  global
+@types/node                        17.0.33  17.0.33        18.11.0  global
+axios                               0.27.2   0.27.2          1.1.3  global
+chalk                                4.1.2    4.1.2          5.1.2  global
+compare-versions                     4.1.4    4.1.4          5.0.1  global
+css-minimizer-webpack-plugin         3.4.1    3.4.1          4.2.2  global
+electron                           18.3.15  18.3.15         21.1.1  global
+eslint-config-erb                    4.0.3    4.0.3  4.0.0-alpha.0  global
+eslint-import-resolver-typescript    2.7.1    2.7.1          3.5.1  global
+eslint-plugin-jest                  26.9.0   26.9.0         27.1.2  global
+jest                                28.1.3   28.1.3         29.2.0  global
+jest-environment-jsdom              28.1.3   28.1.3         29.2.0  global
+lint-staged                         12.5.0   12.5.0         13.0.3  global
+react-refresh                       0.13.0   0.13.0         0.14.0  global
+sass-loader                         12.6.0   12.6.0         13.1.0  global
+ts-jest                             28.0.8   28.0.8         29.0.3  global

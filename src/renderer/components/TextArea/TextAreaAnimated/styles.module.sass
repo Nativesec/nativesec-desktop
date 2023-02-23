@@ -1,0 +1,88 @@
+@use "renderer/styles/_util" as *
+
+
+.textAreaAnimated.dark
+  textarea
+    color: $white
+    background-color: $gray-900
+.textAreaAnimated.light
+  textarea
+    color: $black
+    background-color: $gray-300
+
+
+.textAreaAnimated
+  position: relative
+  width: 100%
+  height: 100px
+
+  textarea
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+    resize: none
+
+    border: 0
+    padding: 1.25rem
+    font-size: 1rem
+    border-radius: $default-radius
+    outline: none
+
+    background: none
+
+    &:hover
+      border-color: $black
+
+    &:focus
+      border-color: $blue-100
+
+  .input.notValid
+    border: 1px solid $red-100
+
+  label
+    position: absolute
+    left: 10px
+    font-size: 1rem
+    top: 16px
+    padding: 0 0.5rem
+
+    cursor: text
+    background-color: transparent
+    pointer-events: none
+
+    transition: top 100ms ease-in, left 100ms ease-in, font-size 100ms ease-in, z-index 0.2s
+
+  .input:focus ~ label,
+  .input:not(:placeholder-shown).input:not(:focus) ~ label
+    top: -7px
+    left: 10px
+    font-size: .9rem
+
+  .input.notValid:focus ~ label,
+  .input.notValid:not(:placeholder-shown).input.notValid:not(:focus) ~ label
+    color: $red-100
+
+  .input.notValid ~ label
+    color: $red-100
+
+  .input:focus
+    border-width: 2px
+
+  ::-webkit-scrollbar
+    width: 5px
+  ::-webkit-scrollbar-track
+    background: #f1f1f1
+  ::-webkit-scrollbar-thumb
+    background: $gray-600
+    border-radius: 5rem
+  ::-webkit-scrollbar-thumb:hover
+    background: $gray-800
+
+
+
+
+
+

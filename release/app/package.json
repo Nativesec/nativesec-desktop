@@ -1,0 +1,21 @@
+{
+  "name": "NativeSec",
+  "version": "1.1.7",
+  "description": "Nativesec - sharing passwords, files and messages securelys",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Jack Experts",
+    "email": "contato@nativesec.io",
+    "url": "https://nativesec.io/"
+  },
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "electron-rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+    "postinstall": "npm run electron-rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+  },
+  "dependencies": {
+    "@journeyapps/sqlcipher": "^5.3.1",
+    "openpgp": "^5.4.0"
+  }
+}

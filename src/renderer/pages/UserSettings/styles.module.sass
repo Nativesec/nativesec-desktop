@@ -1,0 +1,177 @@
+@use "renderer/styles/_util" as *
+
+// ------------------------------------------------------------
+// -------------------------- Colors --------------------------
+// ------------------------------------------------------------
+.userSettings.dark
+  background-color: $gray-700
+
+  .button
+    &::before
+      background-color: $blue-100
+  .keys
+    button
+      background-color: $gray-700
+      color: $white
+      &:hover
+        background-color: $blue-100
+  h3,h4,p
+    color: $white
+
+  select
+    background-color: $gray-700
+    color: $white
+  .optionsContainer
+    h4
+      color: $gray-400
+    .option
+      background-color: $gray-850
+    
+      &.optionClickable
+        &:hover
+          background-color: $gray-1000
+      &.active
+        background-color: $gray-900
+    .warning
+      color: $red-100
+
+
+.userSettings.light
+  background-color: $white
+
+  .button
+    &::before
+      background-color: $blue-100
+
+  h3,h4,p
+    color: $black
+
+  .optionsContainer
+    h4
+      color: $gray-400
+    .option
+      background-color: $gray-300
+      &.optionClickable
+        &:hover
+          background-color: $gray-350
+    select
+      background-color: $white
+      color: $black
+
+      .warning
+        color: $red-100
+  .buttons
+    background-color: $white
+
+// ------------------------------------------------------------
+// ------------------------- Settings -------------------------
+// ------------------------------------------------------------
+
+.userSettings
+  @include flex(flex, center, center, column)
+  width: 100%
+
+  overflow: auto
+
+
+  .box
+    @include flex(flex, center, flex-start, column)
+    height: 100%
+    width: 100%
+    padding: 3rem
+
+    border-radius: $default-radius
+    gap: 6rem
+
+    .keys
+      @include flex(flex, center, space-around, row)
+      width: 100%
+      gap: 2rem
+      padding: 4rem
+      border-bottom: 1px solid $blue-100
+      button
+        min-width: 230px
+        min-height: 35px
+        text-transform: uppercase
+
+      p
+        font-size: .9rem
+
+    .container
+      @include flex(flex, flex-start, space-around, row)
+      width: 100%
+
+      .options
+        @include flex(flex, center, flex-start, column)
+        gap: 1rem
+        width: 100%
+
+        .optionsContainer
+          @include flex(flex, center, flex-start, column)
+          width: 100%
+          max-width: 500px
+          @media (max-width: 1100px)
+            max-width: 400px !important
+
+          h4
+            text-align: start
+            width: 100%
+            font-family: 'Anek Devanagari', sans-serif
+
+          .option
+            @include flex(flex, center, flex-start, column)
+            border-radius: $default-radius
+            padding: .8rem 1rem
+            max-width: 500px
+            width: 100%
+            margin-bottom: 1rem
+
+
+
+
+            .optionContent
+              @include flex(flex, center, flex-start, row)
+              width: 100%
+              div
+                &:last-child
+                  pointer-events: none
+
+            .warning
+              color: $red-100
+              font-size: .8rem
+              margin-top: 1rem
+
+            &.optionClickable
+              cursor: pointer
+              transition: background-color 0.2s ease
+
+
+            .title
+              flex: 1
+
+              p
+                font-size: .9rem
+
+            select
+              width: 200px
+              border: 0
+              border-radius: $default-radius
+              height: 35px
+              font-size: .85rem
+              padding: 0 .5rem
+              outline: none
+
+  .buttons
+    @include flex(flex, center, center, row)
+    width: calc( 100% - 80px )
+    height: 80px
+    gap: 2rem
+    position: fixed
+    bottom: 0px
+
+    margin-bottom: 1rem
+
+    button
+      max-width: 230px
+      height: 40px
+

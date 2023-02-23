@@ -1,0 +1,112 @@
+@use "renderer/styles/_util" as *
+// --------------------------------------------------------------
+// --------------------------- Colors- --------------------------
+// --------------------------------------------------------------
+
+.members.dark
+  .imgProfile
+    background-color: $gray-700
+    border: 1px solid $white
+
+  button
+    background-color: $gray-650
+    &:hover
+      background-color: $red-100
+.members.light
+  .imgProfile
+    background-color: $gray-200
+    border: 1px solid $black
+
+  button
+    background-color: $gray-300
+    &:hover
+      background-color: $red-100
+      color: $white
+
+// --------------------------------------------------------------
+// -------------------------- Settings --------------------------
+// --------------------------------------------------------------
+
+.members
+  @include flex(flex, center, center, column)
+  height: 100%
+  width: 100%
+  gap: 1rem
+  padding: 1rem
+  position: relative
+
+  max-width: 1000px
+
+  .participant_box
+    border-bottom: 2px solid var(--main-color)
+
+  .participant_box, .members_box
+    @include flex(flex, flex-start, flex-start, column)
+    height: 100%
+    width: 100%
+    padding: 1rem
+    gap: 1rem
+
+    overflow: auto
+    position: relative
+
+
+    h4
+      color: $gray-400
+      backdrop-filter: blur(15px)
+      font-family: 'Anek Devanagari', sans-serif
+
+    .participant
+      @include flex(flex, center, flex-start, row)
+      gap: 1rem
+      width: 100%
+
+      .button
+        height: 40px
+        width: 40px
+        border-radius: 5rem
+        background-color: blue
+
+      .info
+          @include flex(flex, flex-start, center, column)
+
+          .delete
+            position: absolute
+            width: 100%
+            float: right
+            right: 20px
+          .user
+              font-size: 1rem
+          p
+              font-size: .8rem
+
+      .imgProfile
+          @include flex(flex, center, center, row)
+          border-radius: 5rem
+          width: 3rem
+          height: 3rem
+          text-transform: uppercase
+
+      button
+          @include flex(flex, center, center, row)
+          position: relative
+          font-size: 1.6rem
+          height: 40px
+          width: 40px
+
+          margin-right: 20px
+          margin-left: auto
+
+          border-radius: .5rem
+          transition: background-color ease-in-out 0.2s, color ease-in-out 0.2s
+
+          svg
+            max-height: 40px
+            max-width: 40px
+            cursor: pointer
+            z-index: 10
+            position: relative
+            min-width: 40px
+            min-height: 40px
+            padding: .6rem
+            border-radius: 5rem

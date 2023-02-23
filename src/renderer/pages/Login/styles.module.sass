@@ -1,0 +1,43 @@
+@use "../../styles/_util" as *
+
+
+.login
+  @include flex(flex, center, center, column)
+
+  height: 100vh
+  width: 100%
+  gap: 16px
+
+  img
+    width: 100%
+    max-width: 300px
+
+
+  .login_form
+    @include flex(flex, center, center, column)
+    max-width: 400px
+    margin-top: 50px
+    width: 100%
+
+    form
+      @include flex(flex, center, center, column)
+      width: 100%
+
+      .form_error
+        @include form_error()
+    input
+      background: transparent
+      border: 1px solid !important
+    label
+      background-color: $gray-100
+    a
+      margin-top: 2rem
+      width: 100%
+      color: $blue-100
+      text-align: end
+      font-size: .95rem
+
+      &:hover
+        text-decoration: underline
+
+

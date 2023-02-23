@@ -1,0 +1,97 @@
+@use 'renderer/styles/_util' as *
+
+.stepFour.dark
+  label
+    background-color: $gray-700 !important
+    color: $white !important
+  input
+    color: $white
+    background: transparent
+    border: 1px solid !important
+
+.stepFour.light
+  label
+    background-color: $gray-100 !important
+    color: $gray-700 !important
+  input
+    border: 1px solid  !important
+    background-color: transparent
+
+
+.stepFour
+  @include flex(flex, center ,center, column)
+  width: 100%
+
+  @media (max-height: 700px)
+    margin-top: -4rem
+
+  .list
+    width: 100%
+    @include flex(flex, center,center, column)
+    margin-bottom: 5rem
+    margin-top: 2rem
+    h4
+      margin-bottom: 1rem
+      margin-left: 1rem
+    >div
+      width: 100%
+      @include flex(flex, flex-start ,space-around, row)
+
+    .emails_container
+      max-height: 120px
+      height: 120px
+      overflow: auto
+
+      @media (max-height:800px)
+        max-height: 80px
+        height: 80px
+      .emails_list
+        @include flex(flex, center ,center, column)
+        gap: .5rem
+        text-align: center
+        width:100%
+
+    ::-webkit-scrollbar
+      width: 5px
+    ::-webkit-scrollbar-track
+      background: #f1f1f1
+    ::-webkit-scrollbar-thumb
+      background: $blue-100
+    ::-webkit-scrollbar-thumb:hover
+      background: $blue-100-hover
+
+  .email
+    width: 100%
+    @include flex(flex, center ,center, column)
+
+    >div
+      @include flex(flex, center ,space-around, row)
+      gap: 1rem
+      margin-bottom: 2rem
+      position: relative
+      width: 100%
+
+      .email_switch
+        @include flex(flex, center ,space-around, row)
+        width: 240px
+        gap: .5rem
+
+        p
+          width: 100%
+      .error
+        position: absolute
+        left: 5px
+        bottom: -1.3rem
+        color: $red-100
+
+    button
+      background-color: $purple-100
+      max-width: 350px
+      &:hover
+        background-color: $purple-100-hover
+
+
+
+
+
+

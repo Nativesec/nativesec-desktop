@@ -1,0 +1,29 @@
+@use "../../../styles/_util" as *
+.step
+  display: flex
+  gap: 1rem
+  width: 100%
+
+  div
+    @include flex(flex,center, center, row)
+
+    width: 100%
+    gap: 10px
+    h5
+      max-width: 40px
+
+    span
+      @include flex(flex,center, center, row)
+
+      border-radius: 5rem
+      height: 25px
+      width: 25px
+      font-size: .9rem
+      background-color: $gray-400
+      color: $white
+
+      svg
+        font-size: 1.1rem
+
+    .selected
+      background-color: $blue-100

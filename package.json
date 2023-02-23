@@ -1,0 +1,296 @@
+{
+  "version": "1.1.7",
+  "description": "Nativesec - sharing passwords, files and messages securelys",
+  "license": "UNLICENSED",
+  "homepage": "https://www.nativesec.io",
+  "main": "./src/main/main.ts",
+  "author": {
+    "name": "Jack Experts",
+    "email": "contato@nativesec.io",
+    "url": "https://nativesec.io/"
+  },
+  "contributors": [
+    {
+      "name": "Fernando Belmonte",
+      "email": "",
+      "url": "https://github.com/FJBelmontek"
+    },
+    {
+      "name": "Leonardo Reis",
+      "email": "",
+      "url": "https://github.com/leonardoReizzk"
+    },
+    {
+      "name": "Dirceu silva",
+      "email": "",
+      "url": "https://github.com/contato318"
+    }
+  ],
+  "scripts": {
+    "build": "concurrently \"yarn build:main\" \"yarn build:renderer\"",
+    "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
+    "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
+    "postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts",
+    "lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx",
+    "package": "ts-node ./.erb/scripts/clean.js dist && yarn build && electron-builder build --publish never",
+    "prepare": "husky install",
+    "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
+    "start": "ts-node ./.erb/scripts/check-port-in-use.js && yarn start:renderer",
+    "start:main": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
+    "start:preload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
+    "start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
+    "test": "jest"
+  },
+  "build": {
+    "productName": "NativeSec",
+    "appId": "com.nativesec.desktop",
+    "asar": true,
+    "asarUnpack": "**\\*.{node,dll}",
+    "files": [
+      "dist",
+      "node_modules",
+      "package.json"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "private": false,
+        "owner": "Nativesec",
+        "repo": "nativesec-desktop"
+      }
+    ],
+    "afterSign": ".erb/scripts/notarize.js",
+    "mac": {
+      "target": {
+        "target": "default",
+        "arch": [
+          "arm64",
+          "x64"
+        ]
+      },
+      "icon": "assets/SO/mac/icon.icns",
+      "category": "public.app-category.utilities",
+      "type": "distribution",
+      "hardenedRuntime": true,
+      "entitlements": "assets/entitlements.mac.plist",
+      "entitlementsInherit": "assets/entitlements.mac.plist",
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "icon": "assets/SO/mac/icon.icns",
+      "sign": false
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "${productName}-Setup-${version}.${ext}",
+      "verifyUpdateCodeSignature": false,
+      "icon": "assets/SO/win/icon.ico"
+    },
+    "linux": {
+      "category": "Utils",
+      "icon": "assets/SO/linux/icons",
+      "packageCategory": "utils",
+      "maintainer": "Jac Experts",
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "synopsis": "Sharing passwords, files and messages securely"
+    },
+    "directories": {
+      "app": "release/app",
+      "buildResources": "assets",
+      "output": "release/build"
+    },
+    "extraResources": [
+      "./assets/**"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "axios": "^0.27.2",
+    "browser-image-size": "^1.1.0",
+    "compare-versions": "^4.1.3",
+    "electron-debug": "^3.2.0",
+    "electron-log": "^4.4.7",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^5.0.3",
+    "elevate-ui": "^1.2.4",
+    "formik": "^2.2.9",
+    "immer": "^9.0.16",
+    "md5": "^2.3.0",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-best-gradient-color-picker": "^2.0.17",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.2",
+    "react-icons": "^4.4.0",
+    "react-lottie-player": "^1.4.3",
+    "react-modal": "^3.15.1",
+    "react-router-dom": "^6.3.0",
+    "react-select": "^5.6.0",
+    "react-svg": "^15.1.7",
+    "react-toastify": "^9.0.8",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.6",
+    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^27.5.1",
+    "@types/md5": "^2.3.2",
+    "@types/node": "^18.11.3",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/react-lottie": "^1.2.6",
+    "@types/react-modal": "^3.13.1",
+    "@types/react-test-renderer": "^18.0.0",
+    "@types/sqlite3": "^3.1.8",
+    "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/webpack-bundle-analyzer": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "browserslist-config-erb": "^0.0.3",
+    "chalk": "^4.1.2",
+    "concurrently": "^7.1.0",
+    "core-js": "^3.22.5",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "detect-port": "^1.3.0",
+    "electron": "^18.2.3",
+    "electron-builder": "^23.6.0",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-notarize": "^1.2.1",
+    "electron-rebuild": "^3.2.7",
+    "electronmon": "^2.0.2",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-erb": "^4.0.3",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "lint-staged": "^12.4.1",
+    "mini-css-extract-plugin": "^2.6.0",
+    "prettier": "^2.6.2",
+    "react-refresh": "^0.13.0",
+    "react-test-renderer": "^18.1.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-jest": "^28.0.2",
+    "ts-loader": "^9.3.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.72.1",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "collective": {
+    "url": "https://opencollective.com/electron-react-boilerplate-594"
+  },
+  "devEngines": {
+    "node": ">=14.x",
+    "npm": ">=7.x"
+  },
+  "electronmon": {
+    "patterns": [
+      "!**/**",
+      "src/main/*"
+    ],
+    "logLevel": "quiet"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "cross-env NODE_ENV=development eslint --cache"
+    ],
+    "*.json,.{eslintrc,prettierrc}": [
+      "prettier --ignore-path .eslintignore --parser json --write"
+    ],
+    "*.{css,scss}": [
+      "prettier --ignore-path .eslintignore --single-quote --write"
+    ],
+    "*.{html,md,yml}": [
+      "prettier --ignore-path .eslintignore --single-quote --write"
+    ]
+  },
+  "browserslist": [],
+  "prettier": {
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": [
+          ".prettierrc",
+          ".eslintrc"
+        ],
+        "options": {
+          "parser": "json"
+        }
+      }
+    ]
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "release/app/node_modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/.erb/mocks/fileMock.js",
+      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+    },
+    "setupFiles": [
+      "./.erb/scripts/check-build-exists.ts"
+    ],
+    "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    },
+    "testPathIgnorePatterns": [
+      "release/app/dist"
+    ],
+    "transform": {
+      "\\.(ts|tsx|js|jsx)$": "ts-jest"
+    }
+  }
+}

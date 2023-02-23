@@ -1,0 +1,37 @@
+@use "renderer/styles/_util" as *
+.safetyPhrase
+  @include flex(flex, center, center, row)
+  height: 100%
+  width: 100%
+  .safetyPhrase_content
+    @include flex(flex, center, center, column)
+    height: 100%
+    width: 600px
+    gap: 3rem
+    .safetyPhrase_content_svg
+      @include flex(flex, center, center, column)
+
+      width: 100%
+      svg
+        width: 200px !important
+        height: 200px !important
+
+    form
+      @include flex(flex, center, center, column)
+      width: 70%
+
+      p
+        color: $red-100
+        margin-left: 5px
+        margin-top: 5px
+        font-size: .9rem
+        width: 100%
+
+      button
+        margin-top: 3rem
+      input
+        background: transparent
+        border: 1px solid !important
+      label
+        background-color: $gray-100
+

@@ -1,0 +1,63 @@
+@use "renderer/styles/_util" as *
+
+.createWorkspace.dark
+  background-color: $gray-700
+  color: $white
+
+  .main_button
+
+.createWorkspace.light
+
+.createWorkspace
+  @include flex(flex, center, space-around, column)
+  width: 100%
+  height: 100%
+  @include default_page()
+  position: relative
+
+  .steps
+    width: 100%
+    max-width: 500px
+
+  .createWorkspace_content_svg
+    width: 100%
+    @include flex(flex, center, center, column)
+
+  .createWorkspace_content
+    @include flex(flex, center, center, row)
+    width: 100%
+    height: 100vh
+
+    form
+      @include flex(flex, center, center, column)
+      max-width: 720px
+      text-align: center
+      width: 100%
+
+  .createWorkspace_buttons
+    position: absolute
+    display: flex
+    flex-direction: column
+    gap: 3rem
+    bottom: 6rem
+    @media (max-height:900px)
+      bottom: 3rem
+    @media (max-height: 700px)
+      bottom: .5rem
+      &.buttonFirstStep
+        bottom: 3rem !important
+
+    .main_button
+      width: 350px
+
+      button
+        transition: background-color ease-in-out 0.2s, box-shadow 0.2s
+
+        z-index: 10
+        position: relative
+        min-width: 40px
+        min-height: 40px
+        padding: .6rem
+
+
+
